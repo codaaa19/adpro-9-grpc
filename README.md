@@ -34,5 +34,25 @@
 
 ## 5. In what ways could the Rust gRPC code be structured to facilitate code reuse and modularity, promoting maintainability and extensibility over time?  
 
-- Trait + Module : 
+Untuk menjaga agar layanan gRPC di Rust dapat dikembangkan dan dipelihara dengan efektif, gunakan perpustakaan yang sudah ada untuk mengulang penggunaan dan merawat kode. Terapkan struktur modular dengan mengorganisir kode ke dalam modul yang berbeda yang memiliki tanggung jawab yang spesifik, serta gunakan fitur yang memungkinkan penciptaan antarmuka yang bisa digunakan kembali.
+
+## 6. In the **MyPaymentService** implementation, what additional steps might be necessary to handle more complex payment processing logic?  
+
+Untuk mengelola logika pemrosesan pembayaran yang lebih rumit, MyPaymentService bisa diperbaiki dengan merubah metode process_payment menjadi server streaming. Hal ini memungkinkan pengiriman data yang kompleks secara bertahap dan lebih efisien kepada klien.
+
+## 7. What impact does the adoption of gRPC as a communication protocol have on the overall architecture and design of distributed systems, particularly in terms of interoperability with other technologies and platforms?  
+
+Adopsi gRPC sebagai protokol komunikasi sangat mempengaruhi arsitektur sistem terdistribusi. gRPC mengeliminasi kebutuhan pemikiran modul akses melalui HTTP, dengan otomatis mengatur koneksi untuk pemanggilan metode yang diinginkan melalui kesepakatan file proto. Ini memungkinkan klien memanggil fungsi server seolah berinteraksi langsung, memfasilitasi konektivitas dan operasi lintas teknologi, platform, dan sistem, serta meningkatkan interoperabilitas dalam arsitektur sistem yang kompleks.
+
+## 8. What are the advantages and disadvantages of using HTTP/2, the underlying protocol for gRPC, compared to HTTP/1.1 or HTTP/1.1 with WebSocket for REST APIs?  
+
+HTTP/2 memiliki keunggulan atas HTTP/1.1 dan WebSocket dengan fitur seperti multiplexing untuk permintaan bersamaan, server push, kompresi header, protokol biner, dan prioritas aliran yang meningkatkan efisiensi dan manajemen sumber daya. Namun, ini juga menambah kompleksitas implementasi, overhead enkripsi, masalah kemacetan TCP, dan isu kompatibilitas browser. Sementara itu, WebSocket cocok untuk komunikasi dua arah real-time melalui satu koneksi TCP, sedangkan HTTP/2 lebih efektif untuk aplikasi web dengan banyak transaksi kecil.
+
+## 9. How does the request-response model of REST APIs contrast with the bidirectional streaming capabilities of gRPC in terms of real-time communication and responsiveness?
+
+REST API sederhana menggunakan metode HTTP standar dan bersifat stateless untuk kemudahan penggunaan tetapi tidak mendukung komunikasi real-time, sering bergantung pada polling yang menambah latensi dan kerumitan. Sebaliknya, gRPC mendukung streaming dua arah, memungkinkan klien dan server untuk bertukar data secara mandiri, ideal untuk skenario real-time dan meningkatkan responsiveness. Meski lebih kompleks, streaming gRPC bisa memberikan kinerja lebih baik dan manfaat komunikasi real-time dibandingkan dengan REST API dalam beberapa kasus.
+
+## 10. What are the implications of the schema-based approach of gRPC, using Protocol Buffers, compared to the more flexible, schema-less nature of JSON in REST API payloads?  
+
+
 
